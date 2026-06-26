@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>القمة الذكية للبرمجيات | Smart Summit Software</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Tahoma, Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #05070f;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(0, 191, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(255, 198, 82, 0.16), transparent 26%),
+        radial-gradient(circle at 50% 90%, rgba(52, 100, 255, 0.12), transparent 32%);
+      pointer-events: none;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(5, 7, 15, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      object-fit: cover;
+      border: 1px solid rgba(255, 211, 106, 0.45);
+      box-shadow: 0 0 28px rgba(255, 211, 106, 0.12);
+    }
+
+    .brand h1 {
+      font-size: 18px;
+      color: #ffd36a;
+      line-height: 1.5;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      display: block;
+      color: #c9d8f2;
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      direction: ltr;
+      text-align: right;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    nav a {
+      color: #dce8ff;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.9;
+      transition: 0.25s;
+    }
+
+    nav a:hover {
+      color: #ffd36a;
+    }
+
+    .top-contact {
+      display: flex;
+      gap: 10px;
+      direction: ltr;
+    }
+
+    .mini-btn {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      text-decoration: none;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: 0.25s;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .mini-btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 211, 106, 0.55);
+      color: #ffd36a;
+    }
+
+    .menu-btn {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.07);
+      color: #ffd36a;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: calc(100vh - 82px);
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: 45px;
+      padding: 70px 0;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 100px;
+      background: rgba(255, 211, 106, 0.08);
+      border: 1px solid rgba(255, 211, 106, 0.28);
+      color: #ffd36a;
+      font-weight: bold;
+      margin-bottom: 22px;
+      direction: ltr;
+      font-size: 14px;
+    }
+
+    .badge::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      background: #00d1ff;
+      border-radius: 50%;
+      box-shadow: 0 0 18px #00d1ff;
+    }
+
+    .hero h2 {
+      font-size: clamp(34px, 5vw, 62px);
+      line-height: 1.25;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero h2 strong {
+      color: #ffd36a;
+      font-weight: 900;
+    }
+
+    .hero .en-title {
+      direction: ltr;
+      text-align: right;
+      color: #8ddcff;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: #c8d4e8;
+      font-size: 18px;
+      line-height: 2;
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-width: 165px;
+      padding: 15px 22px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: 0.28s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #101010;
+      background: linear-gradient(135deg, #ffe28b, #d69b28, #93630f);
+      box-shadow: 0 20px 45px rgba(255, 211, 106, 0.22);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 55px rgba(255, 211, 106, 0.32);
+    }
+
+    .btn-ghost {
+      color: #ffffff;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn-ghost:hover {
+      transform: translateY(-4px);
+      border-color: rgba(0, 209, 255, 0.45);
+      color: #8ddcff;
+    }
+
+    .hero-card {
+      position: relative;
+      padding: 22px;
+      border-radius: 34px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.10), rgba(255,255,255,0.035));
+      border: 1px solid rgba(255,255,255,0.13);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.45);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: rgba(255, 211, 106, 0.18);
+      filter: blur(50px);
+      top: -70px;
+      left: -60px;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      background: rgba(0, 209, 255, 0.14);
+      filter: blur(55px);
+      bottom: -80px;
+      right: -60px;
+    }
+
+    .logo-box {
+      position: relative;
+      z-index: 2;
+      background: rgba(3, 5, 12, 0.55);
+      border-radius: 26px;
+      padding: 18px;
+      border: 1px solid rgba(255, 211, 106, 0.20);
+      text-align: center;
+    }
+
+    .logo-box img {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 24px;
+      display: block;
+      margin: auto;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .managed-line {
+      margin-top: 16px;
+      padding: 13px 16px;
+      border-radius: 16px;
+      color: #ffd36a;
+      background: rgba(255, 211, 106, 0.08);
+      border: 1px solid rgba(255, 211, 106, 0.22);
+      font-weight: 900;
+      direction: ltr;
+      letter-spacing: 0.5px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 18px 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .stat b {
+      display: block;
+      color: #8ddcff;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      color: #b7c7de;
+      font-size: 13px;
+    }
+
+    section {
+      padding: 74px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-head {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-head .small {
+      color: #8ddcff;
+      font-weight: 900;
+      direction: ltr;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .section-head h3 {
+      color: #ffd36a;
+      font-size: clamp(28px, 4vw, 40px);
+      margin-bottom: 12px;
+    }
+
+    .section-head p {
+      color: #b9c8dd;
+      line-height: 1.9;
+      font-size: 16px;
+      max-width: 720px;
+      margin: auto;
+    }
+
+    .about-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .glass {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.22);
+    }
+
+    .glass h4 {
+      color: #ffffff;
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .glass p {
+      color: #c8d4e8;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .english {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 235px;
+      padding: 25px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.11);
+      transition: 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 211, 106, 0.09), transparent 45%, rgba(0, 209, 255, 0.08));
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 211, 106, 0.42);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.30);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .icon {
+      position: relative;
+      z-index: 2;
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: rgba(255, 211, 106, 0.10);
+      border: 1px solid rgba(255, 211, 106, 0.22);
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .card h4 {
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card .en {
+      position: relative;
+      z-index: 2;
+      display: block;
+      direction: ltr;
+      text-align: right;
+      color: #8ddcff;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      position: relative;
+      z-index: 2;
+      color: #b9c8dd;
+      line-height: 1.8;
+      font-size: 15px;
+      flex: 1;
+    }
+
+    .card-actions {
+      position: relative;
+      z-index: 2;
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .small-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      color: #ffd36a;
+      text-decoration: none;
+      background: rgba(255, 211, 106, 0.08);
+      border: 1px solid rgba(255, 211, 106, 0.22);
+      font-weight: bold;
+      font-size: 13px;
+      transition: 0.25s;
+    }
+
+    .small-action:hover {
+      background: rgba(255, 211, 106, 0.16);
+      transform: translateY(-3px);
+    }
+
+    .small-action.blue {
+      color: #8ddcff;
+      border-color: rgba(0, 209, 255, 0.25);
+      background: rgba(0, 209, 255, 0.08);
+    }
+
+    .contact-panel {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: center;
+      padding: 34px;
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(255, 211, 106, 0.10), rgba(0, 209, 255, 0.08)),
+        rgba(255,255,255,0.045);
+      border: 1px solid rgba(255, 211, 106, 0.18);
+    }
+
+    .contact-panel h3 {
+      color: #ffd36a;
+      font-size: 34px;
+      margin-bottom: 14px;
+    }
+
+    .contact-panel p {
+      color: #c8d4e8;
+      line-height: 2;
+      font-size: 17px;
+    }
+
+    .contact-buttons {
+      display: grid;
+      gap: 14px;
+      direction: ltr;
+    }
+
+    .social {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      color: #ffffff;
+      text-decoration: none;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: 0.25s;
+      font-weight: 900;
+    }
+
+    .social:hover {
+      transform: translateX(-6px);
+      border-color: rgba(255, 211, 106, 0.45);
+      color: #ffd36a;
+    }
+
+    .social span {
+      opacity: 0.72;
+      font-size: 13px;
+      font-weight: normal;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 26px 0;
+      text-align: center;
+      color: #9fb1ca;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    footer b {
+      color: #ffd36a;
+    }
+
+    .floating-whatsapp {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 120;
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      color: #101010;
+      background: linear-gradient(135deg, #ffe28b, #d69b28);
+      box-shadow: 0 18px 45px rgba(255, 211, 106, 0.28);
+      font-weight: 900;
+      transition: 0.25s;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-5px) scale(1.03);
+    }
+
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 120;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      text-decoration: none;
+      color: #ffffff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      transition: 0.25s;
+      font-weight: 900;
+    }
+
+    .to-top:hover {
+      color: #ffd36a;
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 980px) {
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        position: fixed;
+        top: 82px;
+        right: 4%;
+        left: 4%;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        border-radius: 20px;
+        background: rgba(5, 7, 15, 0.96);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      nav a {
+        padding: 13px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.045);
+      }
+
+      .hero,
+      .about-panel,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 44px 0;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .brand h1 {
+        font-size: 15px;
+      }
+
+      .brand img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .top-contact {
+        display: none;
+      }
+
+      .contact-panel h3 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container navbar">
+
+      <a class="brand" href="#home" title="الرئيسية">
+        <img src="logo.png" alt="Smart Summit Software Logo">
+        <div>
+          <h1>القمة الذكية للبرمجيات</h1>
+          <span>Smart Summit Software</span>
+        </div>
+      </a>
+
+      <button class="menu-btn" onclick="toggleMenu()" title="القائمة">☰</button>
+
+      <nav id="mainNav">
+        <a href="#home" onclick="closeMenu()">الرئيسية</a>
+        <a href="#about" onclick="closeMenu()">من نحن</a>
+        <a href="#services" onclick="closeMenu()">الخدمات</a>
+        <a href="#products" onclick="closeMenu()">المنتجات</a>
+        <a href="#work" onclick="closeMenu()">أعمالنا</a>
+        <a href="#why" onclick="closeMenu()">لماذا نحن</a>
+        <a href="#contact" onclick="closeMenu()">تواصل</a>
+      </nav>
+
+      <div class="top-contact">
+        <a class="mini-btn" href="https://www.instagram.com/l_wt.j?igsh=MWNxMWpnYXAzb2U4Mg%3D%3D&amp;utm_source=qr" target="_blank" title="Instagram">IG</a>
+        <a class="mini-btn" href="https://www.tiktok.com/@35mo_i?is_from_webapp=1&amp;sender_device=pc" target="_blank" title="TikTok">TT</a>
+        <a class="mini-btn" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9%20%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA" target="_blank" title="WhatsApp">WA</a>
+      </div>
+
+    </div>
+  </header>
+
+  <main id="home" class="container hero">
+
+    <div class="hero-content">
+      <div class="badge">Managed by Abu Sanad</div>
+
+      <h2>
+        نصمم ونطوّر حلولاً برمجية
+        <strong>ترتقي بعملك إلى القمّة</strong>
+      </h2>
+
+      <div class="en-title">Smart Summit Software</div>
+
+      <p>
+        القمة الذكية للبرمجيات تقدّم مواقع إلكترونية، أنظمة إدارية، منيو QR،
+        لوحات تحكم، بطاقات رقمية، وحلول مخصصة للشركات والمتاجر والمطاعم والكوفيهات.
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B7%D9%84%D8%A8%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D9%86%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9%20%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA" target="_blank">
+          اطلب مشروعك الآن
+        </a>
+
+        <a class="btn btn-ghost" href="#work">
+          شاهد أعمالنا
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="logo-box">
+        <img src="logo.png" alt="القمة الذكية للبرمجيات">
+        <div class="managed-line">Managed by Abu Sanad</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <b>Web</b>
+          <span>مواقع احترافية</span>
+        </div>
+        <div class="stat">
+          <b>ERP</b>
+          <span>أنظمة إدارية</span>
+        </div>
+        <div class="stat">
+          <b>QR</b>
+          <span>حلول رقمية</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <section id="about">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">ABOUT US</div>
+        <h3>من نحن</h3>
+        <p>
+          هوية برمجية عراقية بطابع احترافي، هدفها تحويل أفكار المشاريع إلى أنظمة ومواقع واضحة، مرتبة، وقابلة للتطوير.
+        </p>
+      </div>
+
+      <div class="about-panel">
+        <div class="glass">
+          <h4>القمة الذكية للبرمجيات</h4>
+          <p>
+            نعمل على بناء مواقع وأنظمة تخدم أصحاب المشاريع بطريقة سهلة وقوية:
+            واجهات فخمة، تنظيم واضح، تجربة استخدام مريحة، وربط مباشر مع حسابات التواصل وواتساب.
+            بإدارة أبو سند، نهتم أن يكون كل مشروع باسم صاحبه وبهوية مرتبة.
+          </p>
+        </div>
+
+        <div class="glass english">
+          <h4>Smart Summit Software</h4>
+          <p>
+            We build premium websites, digital systems, QR menu solutions,
+            admin dashboards, and custom software experiences for businesses
+            that want a professional digital presence and clean operational tools.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">OUR SERVICES</div>
+        <h3>خدماتنا</h3>
+        <p>نقدّم حلولاً برمجية عملية، فخمة، ومناسبة للمشاريع الصغيرة والمتوسطة والشركات.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="card">
+          <div class="icon">🌐</div>
+          <h4>تصميم مواقع إلكترونية</h4>
+          <span class="en">Websites Development</span>
+          <p>مواقع سريعة ومتجاوبة للشركات، المتاجر، المطاعم، والبراندات الشخصية.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد مثال</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%88%D9%82%D8%B9%20%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%20%D9%85%D9%86%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9">اطلب الخدمة</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🍽️</div>
+          <h4>منيو QR</h4>
+          <span class="en">QR Menu Systems</span>
+          <p>منيو إلكتروني مرتب مع أقسام، صور، أسعار، ولوحة تحكم للإدارة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد مثال</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%86%D9%8A%D9%88%20QR%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A">اطلب الخدمة</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧾</div>
+          <h4>أنظمة محاسبة ومبيعات</h4>
+          <span class="en">Accounting Systems</span>
+          <p>فواتير، مخزن، عملاء، موردين، تقارير، وصندوق حسب طبيعة المشروع.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد مثال</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B8%D8%A7%D9%85%20%D9%85%D8%AD%D8%A7%D8%B3%D8%A8%D8%A9%20%D9%88%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA">اطلب الخدمة</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚙️</div>
+          <h4>لوحات تحكم إدارية</h4>
+          <span class="en">Admin Dashboards</span>
+          <p>لوحات سهلة لإضافة وتعديل البيانات ومراقبة العمل من مكان واحد.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد مثال</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%84%D9%88%D8%AD%D8%A9%20%D8%AA%D8%AD%D9%83%D9%85%20%D8%A5%D8%AF%D8%A7%D8%B1%D9%8A%D8%A9">اطلب الخدمة</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">💳</div>
+          <h4>بطاقات رقمية</h4>
+          <span class="en">Digital Business Cards</span>
+          <p>صفحات تعريفية فخمة تجمع الحسابات، واتساب، والخدمات بروابط مباشرة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#products">شاهد المنتج</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%20%D8%B1%D9%82%D9%85%D9%8A%D8%A9">اطلب الخدمة</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h4>حلول مخصصة</h4>
+          <span class="en">Custom Software Solutions</span>
+          <p>نصمم لك فكرة خاصة حسب شغلك، من أول واجهة إلى نظام متكامل.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">تواصل معنا</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D9%81%D9%83%D8%B1%D8%A9%20%D9%86%D8%B8%D8%A7%D9%85%20%D9%85%D8%AE%D8%B5%D8%B5">اطلب الخدمة</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="products">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">SMART SUMMIT PRODUCTS</div>
+        <h3>منتجات القمة</h3>
+        <p>منتجات رقمية قابلة للتخصيص باسم الزبون أو المشروع.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="card">
+          <div class="icon">💼</div>
+          <h4>كِت البطاقة الرقمية</h4>
+          <span class="en">Digital Business Card Kit</span>
+          <p>بطاقة رقمية احترافية تجمع روابطك وحساباتك بشكل فخم.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">تفاصيل أكثر</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20Digital%20Business%20Card%20Kit">اطلب المنتج</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">☕</div>
+          <h4>كِت منيو QR</h4>
+          <span class="en">QR Menu Website Kit</span>
+          <p>منيو إلكتروني سريع للمطاعم والكوفيهات مع تصميم قابل للتعديل.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد نموذج</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20QR%20Menu%20Website%20Kit">اطلب المنتج</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">📦</div>
+          <h4>بوكس إطلاق المشاريع</h4>
+          <span class="en">Business Launch Box</span>
+          <p>باقة رقمية تجمع موقع، بطاقة، هوية، وصفحة تواصل للمشاريع الجديدة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">تفاصيل أكثر</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20Business%20Launch%20Box">اطلب المنتج</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">OUR WORK</div>
+        <h3>نماذج أعمالنا</h3>
+        <p>
+          نماذج من المشاريع والأنظمة الرقمية التي نعمل عليها ضمن هوية القمة الذكية للبرمجيات.
+        </p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="card">
+          <div class="icon">☕</div>
+          <h4>كوفي حروف</h4>
+          <span class="en">Huroof Coffee QR Menu</span>
+          <p>منيو QR إلكتروني للكوفي مع واجهة زبون مرتبة، أقسام، صور، أسعار، ولوحة تحكم للإدارة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">طلب مشابه</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D9%85%D8%AB%D9%84%20%D9%83%D9%88%D9%81%D9%8A%20%D8%AD%D8%B1%D9%88%D9%81">واتساب</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">💳</div>
+          <h4>بطاقة سند الرقمية</h4>
+          <span class="en">Sanad Digital Card</span>
+          <p>صفحة روابط احترافية تجمع انستكرام، تيك توك، واتساب، وحسابات التواصل بشكل فخم.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#products">شاهد المنتج</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%20%D8%B1%D9%82%D9%85%D9%8A%D8%A9%20%D9%85%D8%AB%D9%84%20%D8%A8%D8%B7%D8%A7%D9%82%D8%A9%20%D8%B3%D9%86%D8%AF">واتساب</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧾</div>
+          <h4>سستم القمة الذكية</h4>
+          <span class="en">Smart Summit ERP System</span>
+          <p>نظام إداري ومحاسبي للشركات والمتاجر يشمل الفواتير، المخزن، العملاء، الموردين، والتقارير.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#services">الخدمات</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%86%D8%B8%D8%A7%D9%85%20ERP%20%D9%84%D8%B4%D8%B1%D9%83%D8%AA%D9%8A">واتساب</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🍽️</div>
+          <h4>منيو QR للمطاعم</h4>
+          <span class="en">Restaurant QR Menu System</span>
+          <p>منيو إلكتروني للمطاعم والكوفيهات مع تصميم متجاوب، أقسام واضحة، وأسعار وصور.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#products">كِت المنيو</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%85%D9%86%D9%8A%D9%88%20QR%20%D9%84%D9%85%D8%B7%D8%B9%D9%85">واتساب</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">⚙️</div>
+          <h4>لوحات تحكم</h4>
+          <span class="en">Admin Dashboards</span>
+          <p>لوحات مالك وكاشير وإدارة بيانات تساعد صاحب المشروع يسيطر على شغله بسهولة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#services">الخدمات</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D9%84%D9%88%D8%AD%D8%A9%20%D8%AA%D8%AD%D9%83%D9%85%20%D9%84%D9%85%D8%B4%D8%B1%D9%88%D8%B9%D9%8A">واتساب</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🚀</div>
+          <h4>حلول مخصصة</h4>
+          <span class="en">Custom Business Software</span>
+          <p>أنظمة خاصة حسب طلب الزبون للمحلات، المطاعم، الشركات، المخازن، والخدمات الرقمية.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">ابدأ مشروعك</a>
+            <a class="small-action blue" target="_blank" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%B9%D9%86%D8%AF%D9%8A%20%D9%81%D9%83%D8%B1%D8%A9%20%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A9%20%D9%85%D8%AE%D8%B5%D8%B5%D8%A9">واتساب</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="container">
+
+      <div class="section-head">
+        <div class="small">WHY US</div>
+        <h3>ليش تختار القمة الذكية؟</h3>
+        <p>لأن الموقع أو النظام لازم يكون مرتب، مفهوم، قابل للتطوير، ويعطي ثقة للزبون من أول نظرة.</p>
+      </div>
+
+      <div class="grid-3">
+
+        <div class="card">
+          <div class="icon">👑</div>
+          <h4>تصميم فخم</h4>
+          <span class="en">Premium Design</span>
+          <p>واجهة قوية وهوية مرتبة تناسب الشركات والمشاريع الجادة.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#work">شاهد أعمالنا</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🧠</div>
+          <h4>تنظيم ذكي</h4>
+          <span class="en">Smart Structure</span>
+          <p>كل قسم بمكانه، وكل زر واضح، بدون تعقيد على المستخدم.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#services">شاهد الخدمات</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛡️</div>
+          <h4>قابلية تطوير</h4>
+          <span class="en">Scalable Systems</span>
+          <p>نبدأ بنسخة مرتبة ونطور لاحقاً حسب توسع المشروع واحتياجاته.</p>
+          <div class="card-actions">
+            <a class="small-action" href="#contact">ابدأ الآن</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact-panel">
+
+      <div>
+        <h3>تواصل معنا</h3>
+        <p>
+          عندك فكرة موقع، نظام، منيو QR، أو بطاقة رقمية؟
+          تواصل معنا عبر واتساب أو تابع حساباتنا الرسمية.
+        </p>
+      </div>
+
+      <div class="contact-buttons">
+
+        <a class="social" href="https://www.instagram.com/l_wt.j?igsh=MWNxMWpnYXAzb2U4Mg%3D%3D&amp;utm_source=qr" target="_blank">
+          Instagram <span>@l_wt.j</span>
+        </a>
+
+        <a class="social" href="https://www.tiktok.com/@35mo_i?is_from_webapp=1&amp;sender_device=pc" target="_blank">
+          TikTok <span>@35mo_i</span>
+        </a>
+
+        <a class="social" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9%20%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA" target="_blank">
+          WhatsApp <span>+964 776 323 5590</span>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 <b>Smart Summit Software</b> — Managed by Abu Sanad
+    <br>
+    القمة الذكية للبرمجيات | حلول برمجية متكاملة للشركات والمتاجر والأنظمة الإدارية
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/9647763235590?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%20%D8%A7%D9%84%D9%82%D9%85%D8%A9%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9%20%D9%84%D9%84%D8%A8%D8%B1%D9%85%D8%AC%D9%8A%D8%A7%D8%AA" target="_blank" title="WhatsApp">
+    WA
+  </a>
+
+  <a class="to-top" href="#home" title="الرجوع للأعلى">
+    ↑
+  </a>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById("mainNav").classList.toggle("open");
+    }
+
+    function closeMenu() {
+      document.getElementById("mainNav").classList.remove("open");
+    }
+  </script>
+
+</body>
+</html>
